@@ -32,8 +32,8 @@
 
       <!-- Login Form -->
       <form  class="form-signin" action="j_security_check" method="post">
-        <input type="text" id="login" class="fadeIn second" name="j_username" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="j_password" placeholder="password">
+        <input type="text" id="login" class="fadeIn second" name="j_username" placeholder="login" required autofocus >
+        <input type="password" id="password" class="fadeIn third" name="j_password" placeholder="password" required autofocus >
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
 
@@ -41,7 +41,7 @@
       <div id="formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
         <br><br>
-        <a class="underlineHover" href="#">Dont have an account?</a>
+        <a class="underlineHover" href="register.jsp">Dont have an account?</a>
       </div>
 
     </div>
