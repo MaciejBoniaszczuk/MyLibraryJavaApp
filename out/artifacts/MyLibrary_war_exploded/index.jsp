@@ -23,29 +23,10 @@
   <body>
   <div class="wrapper fadeInDown">
     <h1 class="myLibrary">My Library</h1>
-    <div id="formContent">
-      <!-- Tabs Titles -->
 
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="${pageContext.request.contextPath}/resources/img/book-open-solid.svg" id="icon1" alt="Book Icon" />
-      </div>
+    <a href="login" type="button" class="btn btn-primary btn-lg mybtn">
+      <span style="font-size: 2rem;letter-spacing: 2px" >CLICK HERE</span></a>
 
-      <!-- Login Form -->
-      <form  class="form-signin" action="j_security_check" method="post">
-        <input type="text" id="login" class="fadeIn second" name="j_username" placeholder="login" required autofocus >
-        <input type="password" id="password" class="fadeIn third" name="j_password" placeholder="password" required autofocus >
-        <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
-
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-        <br><br>
-        <a class="underlineHover" href="register.jsp">Dont have an account?</a>
-      </div>
-
-    </div>
   </div>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
