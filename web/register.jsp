@@ -29,10 +29,10 @@
         </div>
 
         <!-- Register Form -->
-        <form  class="form-signin" action="#" method="post">
+        <form  class="form-signin" action="register" method="post">
             <input type="email" id="email" class="fadeIn second" name="inputEmail" placeholder="Email" required autofocus >
-            <input type="text" id="login" class="fadeIn second" name="j_username" placeholder="login" required autofocus >
-            <input type="password" id="password" class="fadeIn third" name="j_password" placeholder="password" required autofocus >
+            <input type="text" id="login" class="fadeIn second" name="inputUsername" placeholder="login" required autofocus >
+            <input type="password" id="password" class="fadeIn third" name="inputPassword" placeholder="password" required autofocus >
             <input type="submit" class="fadeIn fourth" value="Register">
         </form>
 
