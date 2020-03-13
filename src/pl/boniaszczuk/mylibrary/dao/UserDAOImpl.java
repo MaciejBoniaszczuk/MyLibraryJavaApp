@@ -18,15 +18,12 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
 
-    private static final String CREATE_USER = "INSERT INTO user(username, email, password," +
-            " is_active, books_counter) VALUES(:username,:email,:password," +
-            ":active,:booksCounter);";
-
-    private static final String READ_USER = "SELECT user_id, username, email, password, is_active," +
-            "books_counter FROM user WHERE user_id = :id";
-
+    private static final String CREATE_USER =
+            "INSERT INTO user(username, email, password, is_active) VALUES(:username, :email, :password, :active);";
+    private static final String READ_USER =
+            "SELECT * FROM user WHERE user_id = :id";
     private static final String READ_USER_BY_USERNAME =
-            "SELECT user_id, username, email, password, is_active, books_counter FROM user WHERE username = :username";
+            "SELECT * FROM user WHERE username = :username";
 
     private NamedParameterJdbcTemplate template;
 
@@ -50,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
     private void setPrivigiles(User user) {
         final String userRoleQuery = "INSERT INTO user_role(username) VALUES(:username)";
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
-        template.update(userRoleQuery,paramSource);
+        template.update(userRoleQuery, paramSource);
     }
 
     @Override
@@ -92,7 +89,6 @@ public class UserDAOImpl implements UserDAO {
             user.setUsername(resultSet.getString("username"));
             user.setEmail(resultSet.getString("email"));
             user.setPassword(resultSet.getString("password"));
-            user.setBooksCounter(resultSet.getInt("books_counter"));
             return user;
         }
 

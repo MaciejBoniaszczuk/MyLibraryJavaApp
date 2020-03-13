@@ -30,12 +30,14 @@
         <div class="fadeIn first">
             <img src="${pageContext.request.contextPath}/resources/img/book-open-solid.svg" id="icon1" alt="Book Icon" />
         </div>
-        <form  class="form-signin" action="j_security_check" method="post">
-            <input type="text" id="title" class="fadeIn second" name="title" placeholder="Title" required autofocus >
-            <input type="text" id="author" class="fadeIn second" name="author" placeholder="Author" required autofocus >
+        <form  class="form-signin" action="add" method="post">
+            <input type="text" id="title" class="fadeIn second" name="inputTitle" placeholder="Title" required autofocus >
+            <input type="text" id="author" class="fadeIn second" name="inputAuthor" placeholder="Author" required autofocus >
+            <input type="number" id="note" class="fadeIn second" name="inputNote" max="10" min="1"
+                   placeholder="Your note (1-10)" required autofocus >
             <input name="inputUrl" type="text" class="fadeIn second" placeholder="URL"
                    required autofocus />
-            <input type="text" id="description" class="fadeIn second" name="description" placeholder="Description..."
+            <input type="text" id="description" class="fadeIn second" name="inputDescription" placeholder="Description..."
                       required autofocus >
             <input type="submit" class="fadeIn fourth" value="ADD">
         </form>
