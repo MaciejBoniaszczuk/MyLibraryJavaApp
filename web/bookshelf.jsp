@@ -16,13 +16,14 @@
 </head>
 <body>
 <div class="wrapper fadeInDown">
-    <h1 class="myLibrary">My Library - All Books Added By Our Users</h1>
+    <h1 class="myLibrary">My Library - Your Bookshelf</h1>
     <div id="formContent2">
 
         <div class="container">
             <div class="row">
-            <c:if test="${not empty requestScope.books}">
-                <c:forEach var="book" items="${requestScope.books}">
+<%--            <c:if test="${not empty sessionScope.books} ">--%>
+                <c:forEach var="book" items="${sessionScope.books}">
+                    <c:if test="${sessionScope.userId  == book.user.getId()}">
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
@@ -34,12 +35,15 @@
                         </div>
                     </div>
                 </div>
+                    </c:if>
                 </c:forEach>
-            </c:if>
+
+<%--            </c:if>--%>
+
             </div>
         </div>
 
-
+        <h5>User: ${sessionScope.user.getUsername()} </h5>
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>

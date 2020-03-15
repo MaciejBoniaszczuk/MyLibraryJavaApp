@@ -2,6 +2,7 @@ package pl.boniaszczuk.mylibrary.service;
 
 import pl.boniaszczuk.mylibrary.dao.BookDAO;
 import pl.boniaszczuk.mylibrary.dao.DAOFactory;
+import pl.boniaszczuk.mylibrary.dao.UserDAO;
 import pl.boniaszczuk.mylibrary.model.Book;
 import pl.boniaszczuk.mylibrary.model.User;
 

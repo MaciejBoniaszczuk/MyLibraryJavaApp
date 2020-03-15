@@ -30,8 +30,11 @@ public class LoginFilter implements Filter {
         UserService userService = new UserService();
         String username = request.getUserPrincipal().getName();
         User userByUsername = userService.getUserByUsername(username);
+        User userByUsername1 = userService.getUserById(userByUsername.getId());
         request.getSession(true).setAttribute("user", userByUsername);
+        request.getSession(true).setAttribute("userId", userByUsername1.getId());
     }
+
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

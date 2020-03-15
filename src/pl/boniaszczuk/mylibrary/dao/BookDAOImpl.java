@@ -24,8 +24,10 @@ public class BookDAOImpl implements BookDAO {
             "VALUES(:title,:author,:description,:url,:user_id,:date,:note);";
 
 
-   private static final String READ_USER_BOOKS = "SELECT user.user_id, username, email, is_active, password, book_id, author," +
+    private static final String READ_ALL_BOOKS = "SELECT user.user_id, username, email, is_active, password, book_id, author," +
            "title,description,url,note,date  FROM book  LEFT JOIN user ON book.user_id=user.user_id";
+
+    private static final String READ_BOOKS_BY_USER = "SELECT * FROM book where user_id = :id";
 
 
 
@@ -70,13 +72,13 @@ public class BookDAOImpl implements BookDAO {
         return false;
     }
 
+
     @Override
     public List<Book> getAll() {
 
-        List<Book> books = template.query(READ_USER_BOOKS, new BooksRowMapper());
+        List<Book> books = template.query(READ_ALL_BOOKS, new BooksRowMapper());
         return books;
     }
-
 
 
     private class BooksRowMapper implements RowMapper<Book> {
@@ -85,12 +87,11 @@ public class BookDAOImpl implements BookDAO {
             Book book = new Book();
             book.setId(resultSet.getLong("book_id"));
             book.setAuthor(resultSet.getString("author"));
-            book.setAuthor(resultSet.getString("title"));
+            book.setTitle(resultSet.getString("title"));
             book.setDescription(resultSet.getString("description"));
             book.setUrl(resultSet.getString("url"));
             book.setTimestamp(resultSet.getTimestamp("date"));
             book.setNote(resultSet.getInt("note"));
-            book.setUserId(resultSet.getLong("user_id"));
             User user = new User();
             user.setId(resultSet.getLong("user_id"));
             user.setUsername(resultSet.getString("username"));
@@ -98,15 +99,11 @@ public class BookDAOImpl implements BookDAO {
             user.setPassword(resultSet.getString("password"));
             book.setUser(user);
 
-
             return book;
-
-
 
         }
 
 
-
-
     }
+
 }
