@@ -1,13 +1,19 @@
 package pl.boniaszczuk.mylibrary.dao;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import pl.boniaszczuk.mylibrary.model.Book;
+import pl.boniaszczuk.mylibrary.model.User;
 import pl.boniaszczuk.mylibrary.util.ConnectionProvider;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +23,17 @@ public class BookDAOImpl implements BookDAO {
     private static final String CREATE_BOOK = "INSERT INTO book(title, author, description,url,user_id,date, note)" +
             "VALUES(:title,:author,:description,:url,:user_id,:date,:note);";
 
+
+   private static final String READ_USER_BOOKS = "SELECT user.user_id, username, email, is_active, password, book_id, author," +
+           "title,description,url,note,date  FROM book  LEFT JOIN user ON book.user_id=user.user_id";
+
+
+
     private NamedParameterJdbcTemplate template;
 
     public BookDAOImpl(){
         template = new NamedParameterJdbcTemplate(ConnectionProvider.getDataSource());
+
     }
     @Override
     public Book create(Book book) {
@@ -59,6 +72,41 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public List<Book> getAll() {
-        return null;
+
+        List<Book> books = template.query(READ_USER_BOOKS, new BooksRowMapper());
+        return books;
+    }
+
+
+
+    private class BooksRowMapper implements RowMapper<Book> {
+        @Override
+        public Book mapRow(ResultSet resultSet, int row) throws SQLException {
+            Book book = new Book();
+            book.setId(resultSet.getLong("book_id"));
+            book.setAuthor(resultSet.getString("author"));
+            book.setAuthor(resultSet.getString("title"));
+            book.setDescription(resultSet.getString("description"));
+            book.setUrl(resultSet.getString("url"));
+            book.setTimestamp(resultSet.getTimestamp("date"));
+            book.setNote(resultSet.getInt("note"));
+            book.setUserId(resultSet.getLong("user_id"));
+            User user = new User();
+            user.setId(resultSet.getLong("user_id"));
+            user.setUsername(resultSet.getString("username"));
+            user.setEmail(resultSet.getString("email"));
+            user.setPassword(resultSet.getString("password"));
+            book.setUser(user);
+
+
+            return book;
+
+
+
+        }
+
+
+
+
     }
 }

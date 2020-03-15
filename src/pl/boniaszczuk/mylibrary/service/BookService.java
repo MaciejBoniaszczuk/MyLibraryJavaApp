@@ -5,12 +5,14 @@ import pl.boniaszczuk.mylibrary.dao.DAOFactory;
 import pl.boniaszczuk.mylibrary.model.Book;
 import pl.boniaszczuk.mylibrary.model.User;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class BookService {
-    public void addBook(String title,String author, String desc, String url, User user, int note) {
-       Book book = creteBookObject(author,title, desc, url, user,note);
+    public void addBook(String title, String author, String desc, String url, User user, int note) {
+        Book book = creteBookObject(author, title, desc, url, user, note);
         DAOFactory factory = DAOFactory.getDAOFactory();
         BookDAO bookDAO = factory.getBookDAO();
         bookDAO.create(book);
@@ -28,4 +30,24 @@ public class BookService {
         book.setNote(note);
         return book;
     }
+
+    public List<Book> getAllBooks() {
+        return getAllBooks(null);
+    }
+
+
+    public List<Book> getAllBooks(Comparator<Book> comparator) {
+        DAOFactory factory = DAOFactory.getDAOFactory();
+        BookDAO bookDAO = factory.getBookDAO();
+        List<Book> books = bookDAO.getAll();
+        if (comparator != null && books != null) {
+            books.sort(comparator);
+        }
+        return books;
+
+    }
+
 }
+
+
+

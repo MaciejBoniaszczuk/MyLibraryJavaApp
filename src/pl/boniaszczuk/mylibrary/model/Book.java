@@ -12,6 +12,16 @@ public class Book {
     private Timestamp timestamp;
     private User user;
     private int note;
+    private long userId;
+
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
     public Book(Book book){
         this.id = book.id;
@@ -20,8 +30,9 @@ public class Book {
         this.description = book.description;
         this.url = book.url;
         this.timestamp = new Timestamp(book.timestamp.getTime());
-        this.user = book.user;
+        this.user = new User(book.user);
         this.note = book.note;
+        this.userId = user.getId();
     }
     public Book(){}
 

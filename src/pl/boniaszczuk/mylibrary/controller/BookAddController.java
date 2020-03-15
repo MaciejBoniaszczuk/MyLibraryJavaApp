@@ -24,7 +24,7 @@ public class BookAddController extends HttpServlet {
         if(request.getUserPrincipal() != null) {
             BookService bookService = new BookService();
             bookService.addBook(title,author, description, url, authenticatedUser,note);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/afterlogin.jsp");
         } else {
             response.sendError(403);
         }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>MyLibrary</title>
@@ -19,67 +21,21 @@
 
         <div class="container">
             <div class="row">
+            <c:if test="${not empty requestScope.books}">
+                <c:forEach var="book" items="${requestScope.books}">
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
+                            <h5 class="card-title"><c:out value="${book.title}"/></h5>
+                            <h6 class="card-title"><c:out value="${book.author}"/></h6>
+                            <h7>Note: <c:out value="${book.note}"/></h7>
+                            <p class="card-text"><c:out value="${book.description}" /></p>
                             <a href="#" class="btn btn-primary">Delete</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
-                            <a href="#" class="btn btn-primary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
-                            <a href="#" class="btn btn-primary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
-                            <a href="#" class="btn btn-primary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
-                            <a href="#" class="btn btn-primary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Birding Without Borders</h5>
-                            <h6 class="card-title">Noah Strycker</h6>
-                            <p class="card-text">An Obsession, a Quest, and the Biggest Year in the World</p>
-                            <a href="#" class="btn btn-primary">Delete</a>
-                        </div>
-                    </div>
-                </div>
-
+                </c:forEach>
+            </c:if>
             </div>
         </div>
 
