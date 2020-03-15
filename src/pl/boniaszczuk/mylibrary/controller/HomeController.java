@@ -29,7 +29,7 @@ public class HomeController extends HttpServlet {
     private void saveBooksInRequest(HttpServletRequest request) {
         BookService bookService = new BookService();
         List<Book> allBooks = bookService.getAllBooks((d1, d2) -> d2.getTimestamp().compareTo(d1.getTimestamp()));
-      //  request.setAttribute("books", allBooks);
+       //request.setAttribute("books", allBooks);
         request.getSession().setAttribute("books", allBooks);
     }
 }

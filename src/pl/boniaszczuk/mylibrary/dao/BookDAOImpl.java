@@ -27,9 +27,6 @@ public class BookDAOImpl implements BookDAO {
     private static final String READ_ALL_BOOKS = "SELECT user.user_id, username, email, is_active, password, book_id, author," +
            "title,description,url,note,date  FROM book  LEFT JOIN user ON book.user_id=user.user_id";
 
-    private static final String READ_BOOKS_BY_USER = "SELECT * FROM book where user_id = :id";
-
-
 
     private NamedParameterJdbcTemplate template;
 
@@ -72,14 +69,12 @@ public class BookDAOImpl implements BookDAO {
         return false;
     }
 
-
     @Override
     public List<Book> getAll() {
 
         List<Book> books = template.query(READ_ALL_BOOKS, new BooksRowMapper());
         return books;
     }
-
 
     private class BooksRowMapper implements RowMapper<Book> {
         @Override
@@ -98,12 +93,7 @@ public class BookDAOImpl implements BookDAO {
             user.setEmail(resultSet.getString("email"));
             user.setPassword(resultSet.getString("password"));
             book.setUser(user);
-
             return book;
-
         }
-
-
     }
-
 }
