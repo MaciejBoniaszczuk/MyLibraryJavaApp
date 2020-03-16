@@ -25,7 +25,7 @@
         <span style="font-size: 2rem;letter-spacing: 2px" >See all books</span></a>
     <a style="background: rebeccapurple" href="bookshelf" type="button" class="btn btn-primary btn-lg mybtn">
         <span style="font-size: 2rem;letter-spacing: 2px" >See your bookshelf</span></a>
-    <a href="new.jsp"type="button" class="btn btn-secondary btn-lg mybtn">
+    <a href="add" type="button" class="btn btn-secondary btn-lg mybtn">
         <span style="font-size: 2rem;letter-spacing: 2px" >Add book to your bookshelf</span></a>
     <a href="logout"type="button" class="btn btn-third btn-lg mybtn">
         <span style="font-size: 2rem;letter-spacing: 2px" >LOGOUT</span></a>

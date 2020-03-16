@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Maciek
   Date: 11.03.2020
-  Time: 09:19
+  Time: 11:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="wrapper fadeInDown">
-    <h1 class="myLibrary">My Library</h1>
+    <h1 class="myLibrary">My Library - Add new book</h1>
     <div id="formContent">
         <!-- Tabs Titles -->
 
@@ -30,20 +30,22 @@
         <div class="fadeIn first">
             <img src="${pageContext.request.contextPath}/resources/img/book-open-solid.svg" id="icon1" alt="Book Icon" />
         </div>
+        <form  class="form-signin" action="add" method="post">
+            <input type="text" id="title" class="fadeIn second" name="inputTitle" placeholder="Title" required autofocus >
+            <input type="text" id="author" class="fadeIn second" name="inputAuthor" placeholder="Author" required autofocus >
+            <input type="number" id="note" class="fadeIn second" name="inputNote" max="10" min="1"
+                   placeholder="Your note (1-10)" required autofocus >
+            <input name="inputUrl" type="text" class="fadeIn second" placeholder="URL"
+                   required autofocus />
+            <input type="text" id="description" class="fadeIn second" name="inputDescription" placeholder="Description..."
+                      required autofocus >
+            <input type="submit" class="fadeIn fourth" value="ADD">
 
-        <!-- Login Form -->
-        <form  class="form-signin" action="j_security_check" method="post">
-            <label for="login"></label><input type="text" id="login" class="fadeIn second" name="j_username" placeholder="login" required autofocus >
-            <label for="password"></label><input type="password" id="password" class="fadeIn third" name="j_password" placeholder="password" required autofocus >
-            <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
-
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-            <br><br>
-            <a class="underlineHover" href="register.jsp">Dont have an account?</a>
+        <a style="padding-bottom: 32px" href="login"><button type="button" class="btn btn-primary btn-sm">BACK</button></a>
         </div>
+
+
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -51,4 +53,3 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 </body>
 </html>
-

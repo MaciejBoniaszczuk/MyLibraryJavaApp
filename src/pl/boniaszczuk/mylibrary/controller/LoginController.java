@@ -14,7 +14,8 @@ public class LoginController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getUserPrincipal() != null) {
-            response.sendRedirect(request.getContextPath() + "/afterlogin.jsp");
+           // response.sendRedirect(request.getContextPath() + "/WEB-INF/afterlogin.jsp");
+            request.getRequestDispatcher("WEB-INF/afterlogin.jsp").forward(request,response);
         } else {
             response.sendError(403);
         }

@@ -19,10 +19,10 @@ public class RegisterController extends HttpServlet {
         String email = request.getParameter("inputEmail");
         UserService userService = new UserService();
         userService.addUser(username, email, password);
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        response.sendRedirect(request.getContextPath() + "WEB-INF//login.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("register.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/register.jsp").forward(request,response);
     }
 }

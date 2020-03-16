@@ -24,7 +24,7 @@ public class BookAddController extends HttpServlet {
         if(request.getUserPrincipal() != null) {
             BookService bookService = new BookService();
             bookService.addBook(title,author, description, url, authenticatedUser,note);
-            response.sendRedirect(request.getContextPath() + "/afterlogin.jsp");
+            response.sendRedirect(request.getContextPath() + "WEB-INF/afterlogin.jsp");
         } else {
             response.sendError(403);
         }
@@ -32,7 +32,7 @@ public class BookAddController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getUserPrincipal() != null) {
-            request.getRequestDispatcher("new.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/new.jsp").forward(request, response);
         } else {
             response.sendError(403);
         }

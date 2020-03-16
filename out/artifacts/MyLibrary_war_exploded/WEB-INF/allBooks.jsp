@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <a href="afterlogin.jsp"><button type="button" class="btn btn-primary btn-sm">BACK</button></a>
+        <a href="login"><button type="button" class="btn btn-primary btn-sm">BACK</button></a>
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
