@@ -21,29 +21,23 @@
 
         <div class="container">
             <div class="row">
-<%--            <c:if test="${not empty sessionScope.books} ">--%>
+                <%--            <c:if test="${not empty sessionScope.books} ">--%>
                 <c:forEach var="book" items="${sessionScope.books}">
-                    <c:if test="${sessionScope.userId  == book.user.getId()}">
-                <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><c:out value="${book.title}"/></h5>
-                            <h6 class="card-title"><c:out value="${book.author}"/></h6>
-                            <h7>Note: <c:out value="${book.note}"/></h7>
-                            <p class="card-text"><c:out value="${book.description}" /></p>
-                            <a href="#" class="btn btn-primary">Delete</a>
+                        <div class="col-sm">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><c:out value="${book.title}"/></h5>
+                                    <h6 class="card-title"><c:out value="${book.author}"/></h6>
+                                    <h7>Note: <c:out value="${book.note}"/></h7>
+                                    <p class="card-text"><c:out value="${book.description}" /></p>
+                                    <a href="#" class="btn btn-primary">Add to your Bookshelf</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                    </c:if>
                 </c:forEach>
-
-<%--            </c:if>--%>
-
             </div>
         </div>
 
-        <h5>User: ${sessionScope.user.getUsername()} </h5>
         <a href="afterlogin.jsp"><button type="button" class="btn btn-primary btn-sm">BACK</button></a>
     </div>
 </div>
